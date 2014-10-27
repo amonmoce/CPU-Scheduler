@@ -1,6 +1,5 @@
 //#include "cpu_scheduler.h"
 #include "text_processing.h"
-#include<fstream>
 #include<iostream>
 using namespace std;
 int main(){
@@ -9,15 +8,16 @@ int main(){
   if(file_exist(filename))
     text_to_array(filename);
 
+  get_data();
 
-  typedef struct process{
-    string name;
-    int arrival_time, burst_time;
-  }Process;
+  cout<<"Data for "<<filename<<endl;
+  cout<<algorithm<<endl;
+  for(int i=0; i<process_count;i++){
+    cout<<file_processes[i].name<<endl;
+    cout<<file_processes[i].arrival_time<<endl;
+    cout<<file_processes[i].burst_time<<endl;
 
-//  for(int i=0; i<word_count; i++)
-  //  cout<<words[i];
-
+  }
   //write_in_the_file();
 
   return 0;
