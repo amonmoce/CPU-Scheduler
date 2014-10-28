@@ -1,6 +1,7 @@
 //#include "cpu_scheduler.h"
 #include "data_processing.h"
 #include<iostream>
+#include<string>
 using namespace std;
 int main(){
   const string filename = "testdata/testdata1.txt";
@@ -10,7 +11,15 @@ int main(){
 
   get_data();
 
-  cout<<"Data for "<<filename<<endl;
+  if(algorithm == "FCFS"){
+
+  }
+  if(algorithm == "SRTF"){
+
+  }
+  if(algorithm == "RR"){
+
+  }
   cout<<algorithm<<endl;
   for(int i=0; i<process_count;i++){
     cout<<file_processes[i].name<<endl;

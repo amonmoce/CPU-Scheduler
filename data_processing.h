@@ -35,8 +35,15 @@
 
   void get_data(){
     Process p;
+    int i, time_quantum;
     algorithm = words[2];
-    for(int i=3, j=0; i<word_count; i++, j++){
+    if(algorithm == "RR"){
+      i=4;
+      time_quantum = stoi(words[3]);
+    }
+    else
+      i=3;
+    for(int j=0; i<word_count; i++, j++){
         if(j==7){
           file_processes[process_count++] = p;
           j=0;
