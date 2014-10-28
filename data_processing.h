@@ -2,7 +2,6 @@
 #define TEXT_PROCESSING_H
   #include <fstream>
   #include<string>
-  #include<iostream>
   using namespace std;
 
   const int max_number_of_words = 100;
@@ -35,18 +34,20 @@
   }
 
   void get_data(){
-
+    Process p;
     algorithm = words[2];
-    for(int i=3; i<word_count; i++){
-        Process p;
-        p.name = words[i++];
-        p.arrival_time = stoi(words[i++]);
-        p.burst_time = stoi(words[i]);
-        file_processes[process_count++] = p;
-
+    for(int i=3, j=0; i<word_count; i++, j++){
+        if(j==7){
+          file_processes[process_count++] = p;
+          j=0;
+        }
+        if(j==0 )
+          p.name = words[i];
+        if(j==3)
+          p.arrival_time = stoi(words[i]);
+        if(j==6)
+          p.burst_time = stoi(words[i]);
     }
-
-
   }
 
   void write_in_the_file(){
