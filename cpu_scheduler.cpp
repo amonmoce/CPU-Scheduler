@@ -39,16 +39,21 @@ int main(){
 }
 
 void fcfs_scheduling(struct process *processes, int number_processes){
-  int clock = 0, average_waiting_time = 0, average_turnaround_time = 0;
+  int clock = 0;
+  float average_waiting_time = 0, average_turnaround_time = 0;
   Scheduled_Process p;
   for(int i=0; i<number_processes; i++){
-    average_waiting_time += clock;
+    //average_waiting_time += clock;
     p.scheduled_process_name = processes->name;
-    p.start = clock + processes->arrival_time;
-    p.end = clock + processes->burst_time;
+    if (clock >= processes->arrival_time)
+      p.start = clock;
+    else
+      p.start = processes->arrival_time;
+    p.end = p.start + processes->burst_time;
     average_turnaround_time += p.end - processes->arrival_time;
+    average_waiting_time += p.start - processes->arrival_time;
     cout<<p.scheduled_process_name<<"\t"<<p.start<<"-"<<p.end<<endl;
-    clock += processes->burst_time;
+    clock = p.end;
     gantt[i] = p;
     processes++;
   }
