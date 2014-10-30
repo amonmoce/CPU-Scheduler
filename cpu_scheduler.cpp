@@ -13,12 +13,9 @@ int main(){
 
   if(algorithm == "FCFS"){
     sort_arrival_time();
-    //for(int i=0; i<process_count; i++){
-      //cout<<file_processes[i].name<<endl;
-    //}
     fcfs_scheduling(file_processes, process_count);
     stats = create_stats_string();
-  //  cout<<stats;
+    cout<<stats;
   }
   if(algorithm == "SRTF"){
 
