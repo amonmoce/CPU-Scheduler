@@ -7,26 +7,9 @@ typedef struct scheduled_process{
   int start,end;
 }Scheduled_Process;
 Scheduled_Process gantt[max_number_of_processes];
-void fcfs_scheduling(struct process *processes, int number_processes){
-  int clock = 0, average_waiting_time = 0, average_turnaround_time = 0;
-  Scheduled_Process p;
-  for(int i=0; i<number_processes; i++){
-    average_waiting_time += clock;
-    p.scheduled_process_name = processes->name;
-    p.start = clock;
-    p.end = clock + processes->burst_time;
-    average_turnaround_time += p.end - processes->arrival_time;
-    cout<<p.scheduled_process_name<<"\t"<<p.start<<"-"<<p.end<<endl;
-    clock += processes->burst_time;
-    gantt[i] = p;
-    processes++;
-  }
-  average_waiting_time/=number_processes;
-  average_turnaround_time/=number_processes;
-  cout<<average_waiting_time<<" "<<average_turnaround_time<<endl;
-}
+void fcfs_scheduling(struct process *processes, int number_processes);
 int main(){
-  const string filename = "testdata/testdata1.txt";
+  const string filename = "testdata/testdata2.txt";
 
   if(file_exist(filename))
     text_to_array(filename);
@@ -53,4 +36,23 @@ int main(){
   //write_in_the_file();
 
   return 0;
+}
+
+void fcfs_scheduling(struct process *processes, int number_processes){
+  int clock = 0, average_waiting_time = 0, average_turnaround_time = 0;
+  Scheduled_Process p;
+  for(int i=0; i<number_processes; i++){
+    average_waiting_time += clock;
+    p.scheduled_process_name = processes->name;
+    p.start = clock + processes->arrival_time;
+    p.end = clock + processes->burst_time;
+    average_turnaround_time += p.end - processes->arrival_time;
+    cout<<p.scheduled_process_name<<"\t"<<p.start<<"-"<<p.end<<endl;
+    clock += processes->burst_time;
+    gantt[i] = p;
+    processes++;
+  }
+  average_waiting_time/=number_processes;
+  average_turnaround_time/=number_processes;
+  cout<<average_waiting_time<<" "<<average_turnaround_time<<endl;
 }
