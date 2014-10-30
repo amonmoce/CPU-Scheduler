@@ -1,7 +1,7 @@
 Scheduling Algorithm: FCFS
 
 P1
-Arrival Time: 0
+Arrival Time: 30
 Burst Time: 24
 
 P2
@@ -9,5 +9,5 @@ Arrival Time: 0
 Burst Time: 3
 
 P3
-Arrival Time: 0
+Arrival Time: 10
 Burst Time: 3
