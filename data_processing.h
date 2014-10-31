@@ -6,7 +6,7 @@
 
   const int max_number_of_words = 100;
   const int max_number_of_processes = 20;
-  int word_count = 0, process_count = 0;
+  int word_count = 0, process_count = 0, time_quantum;
   string words[max_number_of_words], algorithm;
   typedef struct process{
     string name;
@@ -35,7 +35,7 @@
 
   void get_data(){
     Process p;
-    int i, time_quantum;
+    int i;
     algorithm = words[2];
     if(algorithm == "RR"){
       i=4;
@@ -67,6 +67,10 @@
           }
         }
       }
+  }
+
+  void sort_arrival_and_burst_time(){
+
   }
 
   void write_in_the_file(){
