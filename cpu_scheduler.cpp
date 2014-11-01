@@ -3,7 +3,7 @@
 #include<iostream>
 
 int main(){
-  const string filename = "testdata/testdata3.txt";
+  const string filename = "testdata/testdata5.txt";
   string stats;
 
   if(file_exist(filename))
@@ -30,6 +30,9 @@ int main(){
 
   if(algorithm == "SRTF"){
     //srtf_scheduling(file_processes, process_count);
+    sort_arrival_and_burst_time();
+    for(int i=0; i<process_count; i++)
+      cout<<file_processes[i].name<<endl;
   }
 
   //write_in_the_file();

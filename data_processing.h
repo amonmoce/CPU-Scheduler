@@ -70,7 +70,17 @@
   }
 
   void sort_arrival_and_burst_time(){
-
+      sort_arrival_time();
+      for(int i=0; i<process_count; i++){
+        for(int j=0; j<process_count; j++){
+          if (file_processes[i].arrival_time == file_processes[j].arrival_time
+            && file_processes[i].burst_time < file_processes[j].burst_time){
+            Process tmp = file_processes[i];
+            file_processes[i] = file_processes[j];
+            file_processes[j] = tmp;
+          }
+        }
+      }
   }
 
   void write_in_the_file(){
