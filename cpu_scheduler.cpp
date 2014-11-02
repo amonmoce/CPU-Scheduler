@@ -1,4 +1,6 @@
-#include "cpu_scheduler.h"
+#include "fcfs_scheduling.h"
+#include "rr_scheduling.h"
+#include "srtf_scheduling.h"
 //#include "data_processing.h"
 #include<iostream>
 
@@ -29,10 +31,12 @@ int main(){
   }
 
   if(algorithm == "SRTF"){
-    //srtf_scheduling(file_processes, process_count);
+    srtf_scheduling(file_processes, process_count);
     sort_arrival_and_burst_time();
-    for(int i=0; i<process_count; i++)
-      cout<<file_processes[i].name<<endl;
+    stats = create_stats_string(scheduled_processes);
+    cout<<stats;
+    //for(int i=0; i<process_count; i++)
+      //cout<<file_processes[i].name<<endl;
   }
 
   //write_in_the_file();
