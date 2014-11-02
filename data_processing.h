@@ -83,8 +83,11 @@
       }
   }
 
-  void write_in_the_file(){
-
+  void write_in_the_file(string filename, string input){
+    ofstream datafile;
+    datafile.open(filename);
+    datafile << input;
+    datafile.close();
   //  cout<<"wrote in the file"<<endl;
 
   }
