@@ -11,6 +11,7 @@ typedef struct scheduled_process{
 Scheduled_Process gantt[max_number_of_processes];
 float average_waiting_time = 0, average_turnaround_time = 0;
 int scheduled_processes;
+string srft_stats;
 
 string create_stats_string(int gantt_processes){
   string gantt_data;

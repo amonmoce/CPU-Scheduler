@@ -5,7 +5,7 @@
 #include<iostream>
 
 int main(){
-  const string filename = "testdata/testdata5.txt";
+  const string filename = "testdata/testdata6.txt";
   string stats;
 
   if(file_exist(filename))
@@ -33,8 +33,7 @@ int main(){
   if(algorithm == "SRTF"){
     sort_arrival_and_burst_time();
     srtf_scheduling(file_processes, process_count);
-    //stats = create_stats_string(scheduled_processes);
-    //cout<<stats;
+    cout<<srft_stats;
     //for(int i=0; i<scheduled_processes; i++)
       //cout<<gantt[i].scheduled_process_name<<endl;
   }
