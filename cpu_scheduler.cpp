@@ -31,12 +31,12 @@ int main(){
   }
 
   if(algorithm == "SRTF"){
-    srtf_scheduling(file_processes, process_count);
     sort_arrival_and_burst_time();
-    stats = create_stats_string(scheduled_processes);
-    cout<<stats;
-    //for(int i=0; i<process_count; i++)
-      //cout<<file_processes[i].name<<endl;
+    srtf_scheduling(file_processes, process_count);
+    //stats = create_stats_string(scheduled_processes);
+    //cout<<stats;
+    //for(int i=0; i<scheduled_processes; i++)
+      //cout<<gantt[i].scheduled_process_name<<endl;
   }
 
   //write_in_the_file();
