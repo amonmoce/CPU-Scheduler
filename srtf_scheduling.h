@@ -5,11 +5,13 @@
 
 void srtf_scheduling(struct process *processes, int number_processes){
   int clock, i = 0, j = 0, old, next = 0, start = 0, burt_time_total = 0, scheduled_processes = 0;
-  int process_end[max_number_of_processes];
+  int process_end[max_number_of_processes], waiting_time[number_processes];
   Scheduled_Process p;
 
-  for(int l=0; l<number_processes; l++)
+  for(int l=0; l<number_processes; l++){
     burt_time_total += processes[l].burst_time;
+    waiting_time[l] = 0;
+  }
 
   for(clock = 0; clock <= burt_time_total; clock++){
     //cout<<next<<endl;
@@ -45,10 +47,21 @@ void srtf_scheduling(struct process *processes, int number_processes){
 
       if(clock == burt_time_total)
         process_end[j++] = clock;
+
+      for(int s = 0; s <number_processes; s++)
+        if(s != next
+          && processes[s].burst_time != 0
+          && processes[s].arrival_time <= waiting_time[s]++)
+          ;
   }
   for(int k=0; k<j;k++)
     gantt[k].end = process_end[k];
-    
+
+  for(int d=0; d<number_processes ;d++)
+    average_waiting_time += waiting_time[d];
+
+  average_waiting_time /=number_processes;
+
   srft_stats = create_stats_string(scheduled_processes);
 
 }
