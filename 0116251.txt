@@ -1,7 +1,2 @@
-P1	0-15
-P2	15-18
-P3	30-39
-P4	39-42
-P5	42-45
-Average Waiting Time: 6.600000
-Average Turnaround Time: 13.200000
+Average Waiting Time: 19.200001
+Average Turnaround Time: 19.200001

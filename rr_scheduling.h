@@ -4,10 +4,41 @@
 #include "cpu_scheduler.h"
 
 void rr_scheduling(struct process *processes, int number_processes){
-    int clock = 0, i = 0, j = 0, k = 0;
-    scheduled_processes = number_processes;
+    int clock_time, i, j=0, flag, processes_total = number_processes;
     Scheduled_Process p;
 
+    for(clock_time=0, i=0; processes_total!=0;){
+      if(processes[i].burst_time <= time_quantum &&  processes[i].burst_time > 0){
+        clock_time+=processes[i].burst_time;
+        processes[i].burst_time = 0;
+        flag=1;
+      }
+      else if(processes[i].burst_time > time_quantum){
+        processes[i].burst_time-=time_quantum;
+        clock_time+=time_quantum;
+      }
+      if(processes[i].burst_time == 0 && flag == 1){
+        processes_total--;
+        average_waiting_time += clock_time-processes[i].arrival_time-processes[i].burst_time;
+        average_turnaround_time+=clock_time-processes[i].arrival_time;
+        flag=0;
+        p.scheduled_process_name = processes[i].name;
+        p.start = clock_time - processes[i].burst_time;
+        p.end = clock_time;
+        gantt[j++] = p;
+      }
+      if(i == processes_total-1)
+        i=0;
+      else if(processes[i++].arrival_time <= clock_time)
+        i++;
+      else
+        i=0;
+
+    }
+    average_waiting_time /=number_processes;
+    average_turnaround_time/=number_processes;
+
+/*
       while(i != scheduled_processes){
         if(processes[i].burst_time != 0){
           p.scheduled_process_name = processes[i].name;
@@ -61,6 +92,9 @@ void rr_scheduling(struct process *processes, int number_processes){
       }
       average_waiting_time /=number_processes;
       average_turnaround_time/=number_processes;
+
+
+      */
 }
 
 
